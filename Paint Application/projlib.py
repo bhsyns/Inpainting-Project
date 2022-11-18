@@ -220,7 +220,10 @@ def maxP(image,mask,bordure):
 # # Iteration Of the algorithm
 
 # %%
-def iterate(image , firstmask , patch_size = 8 ,make_gif=True):
+
+from tkinter import *
+
+def iterate(image , firstmask, self , patch_size = 8 ,make_gif=True):
     print("Ha lghder bda")
     mask=np.copy(firstmask)
     print("sort le ts")
@@ -271,9 +274,23 @@ def iterate(image , firstmask , patch_size = 8 ,make_gif=True):
                     mask[chosenX+i,chosenY+j]= 1
         frt=init_bord_m(mask)
         #view(new_image)
-        iio.imwrite("output/"+str(K)+".jpg", new_image)
+
+
+        iio.imwrite("output/"+str(K)+".png", new_image)
         print(len(frt))
+        self.d = Canvas(self.root, bg='white', width=self.sizey, height=self.sizex,relief=RIDGE,borderwidth=0)
+        self.d.place(x=100,y=0)
+        bg = PhotoImage(file = "output/"+str(K)+'.png')
+        self.d .create_image( 0, 0, image = bg, anchor = "nw")
+        self.d.update_idletasks()
         K+=1
+
+    self.d = Canvas(self.root, bg='white', width=self.sizey, height=self.sizex,relief=RIDGE,borderwidth=0)
+    self.d.place(x=100,y=0)
+    bg = PhotoImage(file = "output/"+str(K)+'.png')
+    self.d .create_image( 0, 0, image = bg, anchor = "nw")
+    self.d.update_idletasks()
+    
 
 # %%
 

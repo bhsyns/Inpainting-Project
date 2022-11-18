@@ -15,6 +15,7 @@ class Paint(object):
 
         self.im=iio.imread(filename)
         sizex , sizey = self.im.shape[0:2]
+        self.sizex, self.sizey = sizex , sizey
 
         self.mask = Image.new("L",(sizey , sizex),255)
         self.array_mask = None
@@ -51,7 +52,7 @@ class Paint(object):
 
         self.start_logo = ImageTk.PhotoImage(Image.open('play.png'))
         self.start = Label(self.paint_tools, text="Start",borderwidth=0,font=('verdana',10,'bold'))
-        self.start.place(x=5,y=130)
+        self.start.place(x=5,y=150)
         self.start_button = Button(self.paint_tools,padx=6,image=self.start_logo,borderwidth=2,command=self.start_iteration)
         self.start_button.place(x=60,y=140)
 
@@ -108,7 +109,7 @@ class Paint(object):
             self.c.create_line(self.old_x, self.old_y, event.x, event.y,
                                width=self.line_width, fill=paint_color,
                                capstyle=ROUND, smooth=TRUE, splinesteps=36)
-            self.draw.line((self.old_x, self.old_y, event.x, event.y), fill=0, width=self.line_width, joint='curve')
+            self.draw.line((self.old_x, self.old_y, event.x, event.y), fill=0, width=self.line_width)
             
 
             
@@ -119,7 +120,6 @@ class Paint(object):
         # save postscipt image 
         global mask
         iio.imsave("test.png",self.mask)
-        lib.view(self.mask)
         self.array_mask = np.array(self.mask)
         mask = (self.array_mask > 0) * 1
 
@@ -131,8 +131,8 @@ class Paint(object):
     def start_iteration(self):
         print("start waaw")
         mask = (self.array_mask > 0) * 1
-        lib.view(mask)
-        lib.iterate(self.im,mask)
+        lib.iterate(self.im,mask,self)
+
 
 if __name__ == '__main__':
-    Paint('TEST.png')
+    Paint('RGB.png')
