@@ -11,3 +11,7 @@ de l’image et de prioriser les pixels pour lesquels on a plus d’information 
 
 C’est une méthode particulièrement efficace pour la suppression d’objets en les remplaçant par des
 fonds convainquant,et qui sert aussi à la complétion de textures.
+
+[1] A. Criminisi, P. Perez, and K. Toyama. Object removal by exemplar-based inpainting. In 2003 IEEE
+Computer Society Conference on Computer Vision and Pattern Recognition, 2003. Proceedings., vol-
+ume 2, pages II–II, 2003.
