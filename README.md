@@ -2,6 +2,8 @@
 
 ## Fait par : Mohamed Ali SRIR et Youness Bahous dans le cadre du projet IMA201
 
+<img src="./output/fiche.gif">
+
 Ce projet est une implémentation et une examination de la méthode proposé par l’article [1], l’ensemble
 de codes Python de ce projet sont disponilbles sur ce dépot Git.
 
